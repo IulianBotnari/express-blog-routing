@@ -23,7 +23,7 @@ const getPostsByTag = (req, res) => {
     let insertTag = req.params.tags
     const includedTag = posts.filter(element => element.tags.includes(insertTag))
 
-    if (matchingPosts.length === 0) {
+    if (includedTag.length === 0) {
         return res.status(404).json({ error: `Nessun post trovato` });
     }
 
