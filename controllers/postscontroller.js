@@ -4,7 +4,7 @@ function getPosts(req, res) {
     res.json(posts);
 }
 
-const index = (req, res)=>{
+const index = (req, res) => {
     const singlePost = posts.find(element => element.slug === req.params.slug)
 
     if (!singlePost) {
@@ -14,7 +14,27 @@ const index = (req, res)=>{
     }
 }
 
+
+
+
+
+const getPostsByTag = (req, res) => {
+
+    let insertTag = req.params.tags
+    const includedTag = posts.filter(element => element.tags.includes(insertTag))
+
+    if (matchingPosts.length === 0) {
+        return res.status(404).json({ error: `Nessun post trovato` });
+    }
+
+    res.status(200).json({ data: includedTag });
+};
+
+
+
+
 module.exports = {
     getPosts,
-    index
+    index,
+    getPostsByTag
 };
