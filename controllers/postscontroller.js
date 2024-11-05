@@ -4,7 +4,7 @@ function getPosts(req, res) {
     res.json(posts);
 }
 
-const index = (req, res) => {
+const getSlug = (req, res) => {
     const singlePost = posts.find(element => element.slug === req.params.slug)
 
     if (!singlePost) {
@@ -35,6 +35,6 @@ const getPostsByTag = (req, res) => {
 
 module.exports = {
     getPosts,
-    index,
+    getSlug,
     getPostsByTag
 };
